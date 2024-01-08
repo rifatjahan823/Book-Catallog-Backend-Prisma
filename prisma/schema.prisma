@@ -20,6 +20,7 @@ contactNo String
 address String
 profileImg String
 reviews Review[]
+order Order[]
 @@map("users")
 }
 
@@ -59,3 +60,12 @@ model Book {
  @@map("reviews")
 }
 
+model Order {
+  id String @id @default(uuid())
+  userId String
+  user User @relation(fields: [userId],references: [id])
+  orderedBooks Json
+  status String @default("pending")
+  createdAt DateTime
+ @@map("orders") 
+}
