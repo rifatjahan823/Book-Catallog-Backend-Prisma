@@ -1,5 +1,6 @@
 import { Category } from "@prisma/client";
-import prisma from "../../../shared/prisma"
+import prisma from "../../../shared/prisma";
+
 
 // **********Create-Category************
 const createCategory=async (data:Category):Promise<Category> => {
