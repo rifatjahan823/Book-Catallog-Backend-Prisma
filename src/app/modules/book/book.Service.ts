@@ -45,7 +45,7 @@ const deleteBook = async (id:string):Promise<Book> => {
     return result;
 };
 
-export const CategoryService={
+export const BookService={
     createBook,
     getAllBook,
     getSingleBook,
