@@ -6,14 +6,21 @@ import prisma from "../../../shared/prisma";
 // **********Create-Book************
 const createBook=async (data:Book):Promise<Book> => {
     const result=await prisma.book.create({
-        data
+        data,
+        include:{
+            category:true
+        }
     });
     return result
 }
 
 // **********get-all-Book************
 const getAllBook = async (): Promise<Book[]> => {
-    const result = await prisma.book.findMany();
+    const result = await prisma.book.findMany({
+        include:{
+            category:true
+        }
+    });
     return result;
 };
 // **********get-single-Book************
@@ -25,6 +32,17 @@ const getSingleBook = async (id:string): Promise<Book|null> => {
     });
     return result;
 };
+// **********get-Books By CategoryId************
+const getBooksByCategoryId = async (id: string): Promise<Book[] | null> => {
+    const booksInCategory = await prisma.book.findMany({
+      where: {
+        categoryId: id,
+      },
+    });
+  
+    return booksInCategory;
+  };
+  
 // **********update-Book************
 const updateBook = async (id:string,payload:Partial<Book>): Promise<Book> => {
     const result = await prisma.book.update({
@@ -50,5 +68,6 @@ export const BookService={
     getAllBook,
     getSingleBook,
     updateBook,
-    deleteBook
+    deleteBook,
+    getBooksByCategoryId
 }

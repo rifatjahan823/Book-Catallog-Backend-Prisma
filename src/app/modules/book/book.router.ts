@@ -10,6 +10,7 @@ router.post('/create-book',BookController.createBook);
 router.patch('/:id',BookController.updateBook);
 router.delete('/:id',BookService.deleteBook);
 router.get('/',BookController.getAllBook);
+router.get('/:categoryId/category',BookController.getBooksByCategoryId);
 router.get('/:id',BookController.getSingleBook);
 
 
