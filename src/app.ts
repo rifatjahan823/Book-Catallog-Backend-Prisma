@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import router from './app/routes';
 
 //middleware
 const app =express();
@@ -16,7 +17,7 @@ app.use(express.json());
 //   });
 
 //-------*****router*****---------
-// app.use('api/v1')
+app.use('/api/v1',router)
 
 
 

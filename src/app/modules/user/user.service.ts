@@ -9,7 +9,23 @@ const createUser=async (data:User):Promise<User> => {
     return result
 }
 
+// **********get-all-user************
+const getAllUser = async (): Promise<User[]> => {
+    const result = await prisma.user.findMany();
+    return result;
+};
+// **********get-single-user************
+const getSingleUser = async (id:string): Promise<User|null> => {
+    const result = await prisma.user.findUnique({
+        where:{
+            id
+        }
+    });
+    return result;
+};
 
 export const UserService={
-    createUser
+    createUser,
+    getAllUser,
+    getSingleUser 
 }
