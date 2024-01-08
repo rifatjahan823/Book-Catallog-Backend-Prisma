@@ -19,6 +19,7 @@ role UserRoles
 contactNo String
 address String
 profileImg String
+reviews Review[]
 @@map("users")
 }
 
@@ -30,6 +31,7 @@ customer
 model Category{
 id String @id @default(uuid())
 title String
+books Book[]
 @@map("categories")
 }
 
@@ -41,5 +43,19 @@ model Book {
   genre String
   publicationDate String
   categoryId String 
+  category Category @relation(fields: [categoryId],references: [id])
+  reviews Review[]
+  @@map("books")
   }
+
+  model Review {
+  id String @id @default(uuid())
+  review String
+  rating Int
+  userId String
+  user User @relation(fields: [userId],references: [id])
+  bookId String
+  book Book @relation(fields: [bookId],references: [id])
+ @@map("reviews")
+}
 
