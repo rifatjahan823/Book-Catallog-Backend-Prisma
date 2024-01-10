@@ -1,13 +1,7 @@
 import { User } from "@prisma/client"
 import prisma from "../../../shared/prisma"
 
-// **********Create-user************
-const createUser=async (data:User):Promise<User> => {
-    const result=await prisma.user.create({
-        data
-    });
-    return result
-}
+
 
 // **********get-all-user************
 const getAllUser = async (): Promise<User[]> => {
@@ -44,7 +38,6 @@ const deleteUser = async (id:string):Promise<User> => {
 };
 
 export const UserService={
-    createUser,
     getAllUser,
     getSingleUser,
     updateUser,

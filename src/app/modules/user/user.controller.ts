@@ -4,16 +4,7 @@ import { UserService } from "./user.service"
 import sendResponse from "../../../shared/sendResponse";
 import httpStatus from "http-status";
 
-// **********Create-user************
-const createUser=catchAsync(async(req: Request, res: Response)=>{
-    const result=await UserService.createUser(req.body);
-    sendResponse(res,{
-        statusCode:httpStatus.OK,
-        success:true,
-        message:"User Created Success fully",
-        data:result
-    })
-})
+
 
 // **********get-all-user************
 const getAllUser=catchAsync(async(req: Request, res: Response)=>{
@@ -61,7 +52,6 @@ const deleteUser=catchAsync(async(req: Request, res: Response)=>{
 })
 
 export const UserController={
-    createUser,
     getAllUser,
     getSingleUser,
     updateUser,
